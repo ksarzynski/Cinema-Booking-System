@@ -8,8 +8,8 @@ class Screening < ApplicationRecord
  validate :correct_date?
 
  def correct_date?
-   if self.screeningdate > DateTime.now 
-     errors.add("Error", "Date can't be in future")
+   if self.screeningdate < DateTime.now 
+     errors.add("Error", "Date can't be in the past")
    end
  end
 end
