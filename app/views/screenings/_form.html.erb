@@ -1,0 +1,39 @@
+<%= form_with(model: screening, local: true) do |form| %>
+  <% if screening.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(screening.errors.count, "error") %> prohibited this screening from being saved:</h2>
+
+      <ul>
+      <% screening.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<tr>
+<td><%= form.label :customer_id, :class => "control-label col-md-1" %></td>
+<td><%= form.collection_select :customer_id, @customers, :id, :email, include_blank: true, :class => "col-md-3" %></td>
+</tr>
+
+<tr>
+<td><%= form.label :film_id, :class => "control-label col-md-1" %> </td>
+<td><%= form.collection_select :film_id, @films, :id, :title, include_blank: true, :class => "col-md-3" %></td>
+</tr>
+
+<tr>
+<td><%= form.label :screeningdate, "Screening date" %> </td>
+<td><%= form.datetime_select  :screeningdate %> </td>
+</tr>
+
+<tr>
+<td><%= form.label :price %> </td>
+<td><%= form.number_field :price %> </td>
+</tr>
+</table>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

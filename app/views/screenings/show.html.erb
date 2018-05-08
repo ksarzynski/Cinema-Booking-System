@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer e-mail</strong>
+  <%= @screening.customer_id %>
+</p>
+
+<p>
+  <strong>Film title</strong>
+  <%= @screening.film_id %>
+</p>
+
+<p>
+  <strong>Screening date:</strong>
+  <%= @screening.screeningdate %>
+</p>
+
+<p>
+  <strong>Ticker price:</strong>
+  <%= @screening.price %>
+</p>
+
+<%= link_to 'Edit', edit_screening_path(@screening) %> |
+<%= link_to 'Back', screenings_path %>

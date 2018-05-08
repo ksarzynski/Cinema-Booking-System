@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  director: MyString
+  release_year: 2000
+  date: 2018-03-14
+  commentary: MyText
+
+two:
+  title: MyString
+  director: MyString
+  release_year: 2000
+  date: 2018-03-14
+  commentary: MyText

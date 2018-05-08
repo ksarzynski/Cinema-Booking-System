@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  film_id: 1
+  screeningdate: 2018-05-08 15:58:28
+  price: 9.99
+
+two:
+  customer_id: 1
+  film_id: 1
+  screeningdate: 2018-05-08 15:58:28
+  price: 9.99
