@@ -5,7 +5,7 @@ has_many :screenings, dependent: :destroy
  validates :title, presence: true;
 
 def self.search(search)
-  where("title LIKE ? OR director LIKE ? OR release_year LIKE ? OR date LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%") 
+  where("title LIKE ? OR director LIKE ? OR release_year LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
 end
 
 
