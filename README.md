@@ -1,3 +1,3 @@
-# Cinema-Booking-System
+# Cinema Booking System
 
 Aplikacja umożliwiająca tworzenie rezerwacji na pokazy filmowe.
