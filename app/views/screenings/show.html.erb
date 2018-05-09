@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+
 <p>
   <strong>Customer's e-mail:</strong>
   <%= @screening.customer.email %>
@@ -20,5 +22,9 @@
   <%= @screening.price %>
 </p>
 
+<hr />
+
 <%= link_to 'Edit', edit_screening_path(@screening) %> |
 <%= link_to 'Back', screenings_path %>
+
+</div>

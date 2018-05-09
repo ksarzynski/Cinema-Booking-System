@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+
 <p>
   <strong>Title:</strong>
   <%= @film.title %>
@@ -15,5 +17,9 @@
   <%= @film.release_year %>
 </p>
 
+<hr />
+
 <%= link_to 'Edit', edit_film_path(@film) %> |
 <%= link_to 'Back', films_path %>
+
+</div>
