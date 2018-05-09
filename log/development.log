@@ -12724,3 +12724,53 @@ Processing by ScreeningsController#index as HTML
 Completed 200 OK in 94ms (Views: 91.1ms | ActiveRecord: 1.2ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-05-09 10:58:00 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kamil/.rvm/gems/ruby-2.5.0/gems/activerecord-5.2.0.rc1/lib/active_record/log_subscriber.rb:98
+Processing by ScreeningsController#index as HTML
+  Rendering screenings/index.html.erb within layouts/application
+  [1m[36mScreening Load (0.3ms)[0m  [1m[34mSELECT "screenings".* FROM "screenings" ORDER BY created_at DESC[0m
+  ↳ app/views/screenings/index.html.erb:25
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:27
+  [1m[36mFilm Load (0.2ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:28
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:27
+  [1m[36mCACHE Film Load (0.0ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:28
+  Rendered screenings/index.html.erb within layouts/application (56.8ms)
+Completed 200 OK in 359ms (Views: 342.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/screenings" for 127.0.0.1 at 2018-05-09 10:58:05 +0200
+Processing by ScreeningsController#index as HTML
+  Rendering screenings/index.html.erb within layouts/application
+  [1m[36mScreening Load (0.4ms)[0m  [1m[34mSELECT "screenings".* FROM "screenings" ORDER BY created_at DESC[0m
+  ↳ app/views/screenings/index.html.erb:25
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:27
+  [1m[36mFilm Load (0.2ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:28
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:27
+  [1m[36mCACHE Film Load (0.0ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/screenings/index.html.erb:28
+  Rendered screenings/index.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 125ms (Views: 120.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/screenings/13" for 127.0.0.1 at 2018-05-09 10:58:06 +0200
+Processing by ScreeningsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mScreening Load (0.4ms)[0m  [1m[34mSELECT  "screenings".* FROM "screenings" WHERE "screenings"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/screenings_controller.rb:80
+  Rendering screenings/show.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/screenings/show.html.erb:7
+  [1m[36mFilm Load (0.2ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/screenings/show.html.erb:12
+  Rendered screenings/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 141ms (Views: 136.2ms | ActiveRecord: 0.8ms)
+
+

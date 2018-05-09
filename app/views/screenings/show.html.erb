@@ -14,7 +14,7 @@
 
 <p>
   <strong>Screening date:</strong>
-  <%= @screening.screeningdate %>
+  <%= @screening.screeningdate.to_time.strftime('%Y-%m-%d %H:%M') %>
 </p>
 
 <p>
