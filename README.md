@@ -1,5 +1,5 @@
 # Cinema Booking System
 
-Aplikacja umożliwiająca tworzenie rezerwacji na pokazy filmowe.
+Create bookings for selected films and customers.
 
-http://cinema-booking-application.herokuapp.com/
+[Heroku](http://cinema-booking-application.herokuapp.com/)
