@@ -1,5 +1,7 @@
 # Cinema Booking System
 
+[![Build Status](https://travis-ci.org/sarzynski/Cinema-Booking-System.svg?branch=master)](https://travis-ci.org/sarzynski/Cinema-Booking-System)
+
 Create bookings for selected films and customers.
 
 [Heroku](http://cinema-booking-application.herokuapp.com/)
