@@ -18,6 +18,7 @@ gem 'holder_rails'
 gem 'bootstrap-table-rails'
 gem 'factory_bot_rails'
 gem 'jquery-turbolinks'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
