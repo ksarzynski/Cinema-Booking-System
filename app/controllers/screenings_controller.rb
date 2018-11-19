@@ -1,7 +1,7 @@
 class ScreeningsController < ApplicationController
   before_action :set_screening, only: [:show, :edit, :update, :destroy]
-  # GET /screenings
-  # GET /screenings.json
+  before_action :authenticate_user!
+
 def index
   @screenings = Screening.all
   if params[:search]
@@ -11,32 +11,25 @@ def index
   end
 end
 
-
-  # GET /screenings/1
-  # GET /screenings/1.json
   def show
   end
 
-  # GET /screenings/new
   def new
     @screening = Screening.new
     @customers = Customer.all.order(:email)
     @films = Film.all.order(:title)
   end
 
-  # GET /screenings/1/edit
   def edit
  @customers = Customer.all.order(:email)
     @films = Film.all.order(:title)
   end
 
-  # POST /screenings
-  # POST /screenings.json
   def create
     @screening = Screening.new(screening_params)
     @customers = Customer.all.order(:email)
     @films = Film.all.order(:title)
-	
+
     respond_to do |format|
       if @screening.save
         format.html { redirect_to @screening, notice: 'Screening was successfully created.' }
@@ -48,8 +41,6 @@ end
     end
   end
 
-  # PATCH/PUT /screenings/1
-  # PATCH/PUT /screenings/1.json
   def update
     @customers = Customer.all.order(:email)
     @films = Film.all.order(:title)
@@ -64,8 +55,6 @@ end
     end
   end
 
-  # DELETE /screenings/1
-  # DELETE /screenings/1.json
   def destroy
     @screening.destroy
     respond_to do |format|
@@ -75,12 +64,11 @@ end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_screening
       @screening = Screening.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def screening_params
       params.require(:screening).permit(:customer_id, :film_id, :screeningdate, :price)
     end
