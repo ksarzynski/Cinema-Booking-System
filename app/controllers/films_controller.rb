@@ -62,6 +62,6 @@ end
     end
 
     def film_params
-      params.require(:film).permit(:title, :director, :release_year)
+      params.require(:film).permit(:title, :director, :release_year, :image)
     end
 end

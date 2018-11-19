@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-
+  <div class = "image">
+  <p>
+  <%= image_tag(@film.image.url, alt: 'Photo') if @film.image? %>
+  </p>
+</div>
 <p>
   <strong>Title:</strong>
   <%= @film.title %>
