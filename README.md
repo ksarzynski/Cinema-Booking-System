@@ -10,3 +10,4 @@ Create bookings for selected films and customers.
 * 'factory_bot_rails'
 * Shoulda Matchers
 * 'devise'
+* 'carrierwave'
