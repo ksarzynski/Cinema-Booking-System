@@ -8,4 +8,5 @@ Create bookings for selected films and customers.
 
 ## Used Gems
 * 'factory_bot_rails'
-* 'Shoulda Matchers'
+* Shoulda Matchers
+* 'devise'
