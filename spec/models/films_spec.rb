@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Film, :type => :model do
-  subject {described_class.new(title: "Taxi Driver", director: "Martin Scorsese", release_year: 1976)}
+  subject {described_class.new(title: "Taxi Driver", director: "Martin Scorsese", release_year: 1976, image: File.basename(File.new(Rails.root.join("spec/support/poster.jpg"))))}
 
   it "is valid with valid attributes" do
     expect(subject).to be_valid
