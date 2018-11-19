@@ -7,6 +7,6 @@ class Film < ApplicationRecord
   validates :title, presence: true
 
   def self.search(search)
-    where('title LIKE ? OR director LIKE ? OR release_year LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+    where('title LIKE ? OR director LIKE ?', "%#{search}%", "%#{search}%")
   end
 end
