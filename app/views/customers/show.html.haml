@@ -1,0 +1,15 @@
+%p#notice= notice
+.container
+  %p
+    %strong First name:
+    = @customer.firstname
+  %p
+    %strong Second name:
+    = @customer.secondname
+  %p
+    %strong E-mail:
+    = @customer.email
+  %hr/
+  = link_to 'Edit', edit_customer_path(@customer)
+  |
+  = link_to 'Back', customers_path

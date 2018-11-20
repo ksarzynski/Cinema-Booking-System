@@ -1,0 +1,29 @@
+= form_with(model: screening, local: true) do |form|
+  - if screening.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(screening.errors.count, "error")
+        prohibited this screening from being saved:
+      %ul
+        - screening.errors.full_messages.each do |message|
+          %li= message
+  %table
+    %tr
+      %td= form.label :customer_id, :class => "control-label col-md-1"
+      %td= form.collection_select :customer_id, @customers, :id, :email, include_blank: true, :class => "col-md-3"
+    %tr
+      %td
+        = form.label :film_id, :class => "control-label col-md-1"
+      %td= form.collection_select :film_id, @films, :id, :title, include_blank: true, :class => "col-md-3"
+    %tr
+      %td
+        = form.label :screeningdate, "Screening date"
+      %td
+        = form.datetime_select  :screeningdate
+    %tr
+      %td
+        = form.label :price
+      %td
+        = form.number_field :price, class: :text_field, step: :any
+  .actions
+    = form.submit

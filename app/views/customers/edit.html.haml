@@ -1,0 +1,10 @@
+%p#notice.text-center= notice
+.container
+  .d-inline-block
+    %h1 Editing Customer
+  %hr/
+  = render 'form', customer: @customer
+  %hr/
+  = link_to 'Show', @customer
+  |
+  = link_to 'Back', customers_path

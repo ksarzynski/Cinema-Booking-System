@@ -1,0 +1,25 @@
+= form_with(model: film, local: true) do |form|
+  - if film.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(film.errors.count, "error")
+        prohibited this film from being saved:
+      %ul
+        - film.errors.full_messages.each do |message|
+          %li= message
+  %table
+    %tr
+      %td= form.label :title
+      %td= form.text_field :title
+    %tr
+      %td= form.label :director
+      %td= form.text_field :director
+    %tr
+      %td= form.label :release_year
+      %td= form.number_field :release_year
+    %tr
+      .image
+        %td= form.label :image, "Poster"
+        %td= form.file_field :image
+  .actions
+    = form.submit

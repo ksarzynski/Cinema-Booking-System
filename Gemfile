@@ -20,6 +20,7 @@ gem 'factory_bot_rails'
 gem 'jquery-turbolinks'
 gem 'devise'
 gem 'carrierwave', '~> 1.0'
+gem "haml-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

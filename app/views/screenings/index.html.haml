@@ -1,0 +1,27 @@
+%p#notice= notice
+.container
+  .d-inline-block
+  .d-inline-block.float-right{style: "margin-top: 10px;"}
+  %h1 Screenings
+  %br/
+  %br/
+  = link_to 'New Screening', new_screening_path, :class => "btn btn-warning btn-sm"
+  %table.table.table-dark.table-stripped.table-hover.sortable
+    %thead
+      %tr
+        %th{"data-sortable" => "true"} Customer
+        %th Film
+        %th Screening date
+        %th Price
+        %th{colspan: "3"}
+    %tbody
+      - @screenings.each do |screening|
+        %tr
+          %td= screening.customer.email
+          %td= screening.film.title
+          %td= screening.screeningdate.to_time.strftime('%Y-%m-%d %H:%M')
+          %td= screening.price
+          %td= link_to 'Show', screening, :class => "btn btn-success btn-sm"
+          %td= link_to 'Edit', edit_screening_path(screening), :class => "btn btn-info btn-sm"
+          %td= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm"
+  %br/

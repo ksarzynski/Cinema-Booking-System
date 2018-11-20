@@ -1,0 +1,18 @@
+%p#notice= notice
+.container
+  %p
+    %strong Customer's e-mail:
+    = @screening.customer.email
+  %p
+    %strong Film title:
+    = @screening.film.title
+  %p
+    %strong Screening date:
+    = @screening.screeningdate.to_time.strftime('%Y-%m-%d %H:%M')
+  %p
+    %strong Ticker price:
+    = @screening.price
+  %hr/
+  = link_to 'Edit', edit_screening_path(@screening)
+  |
+  = link_to 'Back', screenings_path
