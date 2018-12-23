@@ -67,7 +67,7 @@ end
   private
 
     def set_screening
-    @screening = Screening.find(params[:id])
+      @screening = Screening.find(params[:id])
     end
 
     def screening_params
