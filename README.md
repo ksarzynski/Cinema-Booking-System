@@ -11,3 +11,4 @@ Create bookings for selected films and customers.
 * Shoulda Matchers
 * 'devise'
 * 'carrierwave'
+* 'draper'
