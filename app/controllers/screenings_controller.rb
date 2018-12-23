@@ -5,13 +5,14 @@ class ScreeningsController < ApplicationController
 def index
   @screenings = Screening.all
   if params[:search]
-    @screenings = Screening.search(params[:search]).order("created_at DESC")
+    @screenings = Screening.search(params[:search]).order("created_at DESC").decorate
   else
-    @screenings = Screening.all.order("created_at DESC")
+    @screenings = Screening.all.order("created_at DESC").decorate
   end
 end
 
   def show
+    @screening = Screening.find(params[:id]).decorate
   end
 
   def new
@@ -66,7 +67,7 @@ end
   private
 
     def set_screening
-      @screening = Screening.find(params[:id])
+    @screening = Screening.find(params[:id])
     end
 
     def screening_params
