@@ -22,6 +22,9 @@ gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem 'haml-rails'
 gem 'draper'
+gem 'activeadmin'
+gem 'cancan'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
