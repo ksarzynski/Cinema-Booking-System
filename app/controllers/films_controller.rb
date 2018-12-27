@@ -5,9 +5,9 @@ class FilmsController < ApplicationController
 def index
   @films = Film.all
   if params[:search]
-    @films = Film.search(params[:search]).order("created_at DESC")
+    @films = Film.search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
   else
-    @films = Film.all.order("created_at DESC")
+    @films = Film.all.order("created_at DESC").page(params[:page]).per(5)
   end
 end
 

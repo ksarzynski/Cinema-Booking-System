@@ -13,3 +13,4 @@ Create bookings for selected films and customers.
 * 'carrierwave'
 * 'draper'
 * 'activeadmin'
+* 'kaminari'

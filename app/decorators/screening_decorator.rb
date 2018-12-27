@@ -1,4 +1,4 @@
-class ScreeningDecorator < Draper::Decorator
+class ScreeningDecorator < ApplicationDecorator
   delegate_all
 
   def screeningdate

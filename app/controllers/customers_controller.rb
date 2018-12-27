@@ -5,9 +5,9 @@ class CustomersController < ApplicationController
 def index
   @customers = Customer.all
   if params[:search]
-    @customers = Customer.search(params[:search]).order("created_at DESC")
+    @customers = Customer.search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
   else
-    @customers = Customer.all.order("created_at DESC")
+    @customers = Customer.all.order("created_at DESC").page(params[:page]).per(5)
   end
 end
 
