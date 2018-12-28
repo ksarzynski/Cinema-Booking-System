@@ -5,9 +5,9 @@ class ScreeningsController < ApplicationController
 def index
   @screenings = Screening.all
   if params[:search]
-    @screenings = Screening.search(params[:search]).order("created_at DESC").page(params[:page]).per(5).decorate
+    @screenings = Screening.search(params[:search]).order("created_at DESC").page(params[:page]).decorate
   else
-    @screenings = Screening.all.order("created_at DESC").page(params[:page]).per(5).decorate
+    @screenings = Screening.all.order("created_at DESC").page(params[:page]).decorate
   end
 end
 
