@@ -21,7 +21,7 @@
           %td= screening.screeningdate
           %td= screening.price
           %td= link_to 'Show', screening, :class => "btn btn-success btn-sm"
-          - if current_user.programmer?
+          - if current_user.booker?
             %td= link_to 'Edit', edit_screening_path(screening), :class => "btn btn-info btn-sm"
             %td= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm"
   %br/
