@@ -1,9 +1,10 @@
-.container
-  .d-inline-block
-    %h1 Editing Customer
-  %hr/
-  = render 'form', customer: @customer
-  %hr/
-  = link_to 'Show', @customer
-  |
-  = link_to 'Back', customers_path
+- if current_user.booker?
+  .container
+    .d-inline-block
+      %h1 Editing Customer
+      %hr/
+      = render 'form', customer: @customer
+      %hr/
+      = link_to 'Show', @customer
+      |
+      = link_to 'Back', customers_path

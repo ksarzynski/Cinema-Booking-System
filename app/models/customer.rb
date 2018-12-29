@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Customer < ApplicationRecord
   has_many :screenings, dependent: :destroy
   validates :firstname, length: { in: 2..30 }, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: 'has forbidden characters' }, presence: true

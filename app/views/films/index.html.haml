@@ -22,7 +22,8 @@
           %td= film.director
           %td= film.release_year
           %td= link_to 'Show', film, :class => "btn btn-success btn-sm"
-          %td= link_to 'Edit', edit_film_path(film), :class => "btn btn-info btn-sm"
-          %td= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm"
+          - if current_user.programmer?
+            %td= link_to 'Edit', edit_film_path(film), :class => "btn btn-info btn-sm"
+            %td= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-sm"
   %br/
   = paginate @films

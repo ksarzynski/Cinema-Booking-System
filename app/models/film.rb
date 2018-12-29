@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Film < ApplicationRecord
   has_many :screenings, dependent: :destroy
   validates :director, length: { in: 3..30 }, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: 'has forbidden characters' }, presence: true

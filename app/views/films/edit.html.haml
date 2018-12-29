@@ -1,9 +1,10 @@
-.container
-  .d-inline-block
-    %h1 Editing Film
-  %hr/
-  = render 'form', film: @film
-  %hr/
-  = link_to 'Show', @film
-  |
-  = link_to 'Back', films_path
+- if current_user.programmer?
+  .container
+    .d-inline-block
+      %h1 Editing Film
+      %hr/
+      = render 'form', film: @film
+      %hr/
+      = link_to 'Show', @film
+      |
+      = link_to 'Back', films_path
