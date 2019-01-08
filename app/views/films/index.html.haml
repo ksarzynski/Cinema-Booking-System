@@ -7,7 +7,10 @@
       = text_field_tag :search, params[:search], placeholder: "Search"
       = submit_tag "Search", name: nil, class: "btn btn-warning btn-sm "
       = link_to 'Back', films_path , :class => "btn btn-warning btn-sm"
-  = link_to 'New Film', new_film_path, :class => "btn btn-warning btn-sm"
+  - if current_user.programmer?
+    = link_to 'New Film', new_film_path, :class => "btn btn-warning btn-sm"
+  - else
+    = link_to 'Films', films_path, :class => "btn btn-warning btn-sm"
   %table.table.table-dark.table-stripped.table-hover.sortable
     %thead
       %tr
