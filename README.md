@@ -14,3 +14,4 @@ Create bookings for selected films and customers.
 * 'draper'
 * 'activeadmin'
 * 'kaminari'
+* 'friendly_id'

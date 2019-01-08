@@ -58,7 +58,7 @@ end
   private
 
     def set_customer
-      @customer = Customer.find(params[:id])
+      @customer = Customer.friendly.find(params[:id])
     end
 
     def customer_params
