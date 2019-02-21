@@ -2557,3 +2557,527 @@ Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
   [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_admin_comments"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_type" varchar, "resource_id" integer, "author_type" varchar, "author_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "admin_users"[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "customers"[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "customers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "firstname" varchar, "secondname" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "slug" varchar)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_customers_on_slug" ON "customers" ("slug")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "films"[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "films" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "director" varchar, "release_year" integer, "commentary" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "image" varchar, "slug" varchar)[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_films_on_slug" ON "films" ("slug")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "friendly_id_slugs"[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "friendly_id_slugs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "slug" varchar NOT NULL, "sluggable_id" integer NOT NULL, "sluggable_type" varchar(50), "scope" varchar, "created_at" datetime)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope" ON "friendly_id_slugs" ("slug", "sluggable_type", "scope")[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type" ON "friendly_id_slugs" ("slug", "sluggable_type")[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id" ON "friendly_id_slugs" ("sluggable_type", "sluggable_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "screenings"[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "screenings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "customer_id" integer, "film_id" integer, "screeningdate" datetime, "price" decimal, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "role" integer)[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190108124911)[0m
+  [1m[35m (5.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181229130555),
+(20180508134954),
+(20190108124858),
+(20180313235337),
+(20190108124831),
+(20181229123619),
+(20181119121835),
+(20181226233104),
+(20180508135828),
+(20181119135956),
+(20181226233107),
+(20181119141248);
+
+[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-02-21 20:08:04.642205"], ["updated_at", "2019-02-21 20:08:04.642205"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered home/index.html.haml within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "a"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "tomasznowak.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:08:04.929335"], ["updated_at", "2019-02-21 20:08:04.929335"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:08:04.936999"], ["updated_at", "2019-02-21 20:08:04.936999"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.2ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:08:04.961480"], ["updated_at", "2019-02-21 20:08:04.961480"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:08:04.968803"], ["updated_at", "2019-02-21 20:08:04.968803"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:08:04.981712"], ["updated_at", "2019-02-21 20:08:04.981712"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:08:04.989153"], ["updated_at", "2019-02-21 20:08:04.989153"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered home/index.html.haml within layouts/application (0.4ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "a"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "tomasznowak.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:08:49.618415"], ["updated_at", "2019-02-21 20:08:49.618415"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.4ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:08:49.626170"], ["updated_at", "2019-02-21 20:08:49.626170"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.2ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:08:49.643604"], ["updated_at", "2019-02-21 20:08:49.643604"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:08:49.651071"], ["updated_at", "2019-02-21 20:08:49.651071"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.4ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:08:49.663785"], ["updated_at", "2019-02-21 20:08:49.663785"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.4ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:08:49.671635"], ["updated_at", "2019-02-21 20:08:49.671635"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered home/index.html.haml within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "a"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "tomasznowak.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.5ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:09:26.491316"], ["updated_at", "2019-02-21 20:09:26.491316"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:09:26.499187"], ["updated_at", "2019-02-21 20:09:26.499187"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.2ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:09:26.515206"], ["updated_at", "2019-02-21 20:09:26.515206"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:09:26.522295"], ["updated_at", "2019-02-21 20:09:26.522295"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:09:26.534646"], ["updated_at", "2019-02-21 20:09:26.534646"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:09:26.541677"], ["updated_at", "2019-02-21 20:09:26.541677"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered home/index.html.haml within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "a"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "jan@kowalski.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "tomasznowak.pl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.4ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:09:40.347894"], ["updated_at", "2019-02-21 20:09:40.347894"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:09:40.356390"], ["updated_at", "2019-02-21 20:09:40.356390"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.2ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:09:40.373053"], ["updated_at", "2019-02-21 20:09:40.373053"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.4ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:09:40.379947"], ["updated_at", "2019-02-21 20:09:40.379947"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFilm Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "films" WHERE "films"."id" IS NOT NULL AND "films"."slug" = ? LIMIT ?[0m  [["slug", "taxi-driver"], ["LIMIT", 1]]
+  [1m[36mFilm Create (0.3ms)[0m  [1m[32mINSERT INTO "films" ("title", "director", "release_year", "created_at", "updated_at", "image", "slug") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Taxi Driver"], ["director", "Martin Scorsese"], ["release_year", 1976], ["created_at", "2019-02-21 20:09:40.392491"], ["updated_at", "2019-02-21 20:09:40.392491"], ["image", "poster.jpg"], ["slug", "taxi-driver"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomer Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."id" IS NOT NULL AND "customers"."slug" = ? LIMIT ?[0m  [["slug", "kowalski"], ["LIMIT", 1]]
+  [1m[36mCustomer Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "kamil@kowalski.com"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("firstname", "secondname", "email", "created_at", "updated_at", "slug") VALUES (?, ?, ?, ?, ?, ?)[0m  [["firstname", "Kamil"], ["secondname", "Kowalski"], ["email", "kamil@kowalski.com"], ["created_at", "2019-02-21 20:09:40.399493"], ["updated_at", "2019-02-21 20:09:40.399493"], ["slug", "kowalski"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFilm Load (0.1ms)[0m  [1m[34mSELECT  "films".* FROM "films" WHERE "films"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m

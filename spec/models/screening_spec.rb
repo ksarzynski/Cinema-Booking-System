@@ -11,7 +11,7 @@ RSpec.describe Screening, :type => :model do
   it "is valid with valid attributes" do
    subject.film_id = film.id
    subject.customer_id = customer.id
-   subject.screeningdate = "2019-02-03T04:05:06+00:00"
+   subject.screeningdate = "2020-02-03T04:05:06+00:00"
    subject.price = 12
    expect(subject).to be_valid
 end
