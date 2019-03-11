@@ -27,6 +27,7 @@ gem 'cancan'
 gem 'pundit'
 gem 'kaminari'
 gem 'friendly_id', '~> 5.2.4'
+gem 'poltergeist'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
