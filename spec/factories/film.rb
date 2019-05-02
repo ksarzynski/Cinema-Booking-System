@@ -4,5 +4,5 @@ FactoryBot.define do
     f.director { "Martin Scorsese" }
     f.release_year { 1976 }
     f.image { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/poster.jpg'), 'image/jpeg') }
-end
+  end
 end

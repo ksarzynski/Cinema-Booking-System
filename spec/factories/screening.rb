@@ -4,5 +4,5 @@ FactoryBot.define do
     f.customer_id { 1 }
     f.screeningdate { "2020-02-03T04:05:06+00:00" }
     f.price { 12 }
-end
+  end
 end

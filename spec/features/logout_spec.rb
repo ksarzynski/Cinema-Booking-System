@@ -8,6 +8,5 @@ RSpec.feature "Logout", :type => :feature do
     visit root_path
     find(:xpath, "/html/body/nav/div/div[2]/ul/li[5]/a").click
     expect(page).to have_content("Signed out successfully.")
-end
-
+  end
 end

@@ -11,6 +11,5 @@ RSpec.feature "Login", :type => :feature do
     fill_in 'user[password]', with: user.password
     find(:xpath, "/html/body/div/form/div[4]/input").click
     expect(page).to have_content("Signed in successfully.")
-end
-
+  end
 end

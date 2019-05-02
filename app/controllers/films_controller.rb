@@ -2,14 +2,14 @@ class FilmsController < ApplicationController
   before_action :set_film, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-def index
-  @films = Film.all
-  if params[:search]
-    @films = Film.search(params[:search]).order("created_at DESC").page params[:page]
-  else
-    @films = Film.all.order("created_at DESC").page params[:page]
+  def index
+    @films = Film.all
+    if params[:search]
+      @films = Film.search(params[:search]).order("created_at DESC").page params[:page]
+    else
+      @films = Film.all.order("created_at DESC").page params[:page]
+    end
   end
-end
 
   def show
   end
@@ -55,13 +55,13 @@ end
     end
   end
 
-  private
+private
 
-    def set_film
-      @film = Film.friendly.find(params[:id])
-    end
+  def set_film
+    @film = Film.friendly.find(params[:id])
+  end
 
-    def film_params
-      params.require(:film).permit(:title, :director, :release_year, :image)
-    end
+  def film_params
+    params.require(:film).permit(:title, :director, :release_year, :image)
+  end
 end

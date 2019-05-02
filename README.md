@@ -15,3 +15,4 @@ Create bookings for selected films and customers.
 * 'friendly_id'
 * 'capybara'
 * 'poltergeist'
+* 'faker'

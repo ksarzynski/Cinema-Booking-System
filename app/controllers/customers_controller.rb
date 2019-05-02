@@ -2,14 +2,14 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-def index
-  @customers = Customer.all
-  if params[:search]
-    @customers = Customer.search(params[:search]).order("created_at DESC").page params[:page]
-  else
-    @customers = Customer.all.order("created_at DESC").page params[:page]
+  def index
+    @customers = Customer.all
+    if params[:search]
+      @customers = Customer.search(params[:search]).order("created_at DESC").page params[:page]
+    else
+      @customers = Customer.all.order("created_at DESC").page params[:page]
+    end
   end
-end
 
   def show
   end
@@ -57,11 +57,11 @@ end
 
   private
 
-    def set_customer
-      @customer = Customer.friendly.find(params[:id])
-    end
+  def set_customer
+    @customer = Customer.friendly.find(params[:id])
+  end
 
-    def customer_params
-      params.require(:customer).permit(:firstname, :secondname, :email)
-    end
+  def customer_params
+    params.require(:customer).permit(:firstname, :secondname, :email)
+  end
 end

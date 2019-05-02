@@ -2,14 +2,14 @@ class ScreeningsController < ApplicationController
   before_action :set_screening, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-def index
-  @screenings = Screening.all
-  if params[:search]
-    @screenings = Screening.search(params[:search]).order("created_at DESC").page(params[:page]).decorate
-  else
-    @screenings = Screening.all.order("created_at DESC").page(params[:page]).decorate
+  def index
+    @screenings = Screening.all
+    if params[:search]
+      @screenings = Screening.search(params[:search]).order("created_at DESC").page(params[:page]).decorate
+    else
+      @screenings = Screening.all.order("created_at DESC").page(params[:page]).decorate
+    end
   end
-end
 
   def show
     @screening = Screening.find(params[:id]).decorate
@@ -22,7 +22,7 @@ end
   end
 
   def edit
- @customers = Customer.all.order(:email)
+    @customers = Customer.all.order(:email)
     @films = Film.all.order(:title)
   end
 
@@ -64,13 +64,13 @@ end
     end
   end
 
-  private
+private
 
-    def set_screening
-      @screening = Screening.find(params[:id])
-    end
+  def set_screening
+    @screening = Screening.find(params[:id])
+  end
 
-    def screening_params
-      params.require(:screening).permit(:customer_id, :film_id, :screeningdate, :price)
-    end
+  def screening_params
+    params.require(:screening).permit(:customer_id, :film_id, :screeningdate, :price)
+  end
 end
